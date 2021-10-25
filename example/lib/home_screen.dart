@@ -76,6 +76,12 @@ class _HomeScreenState extends State<HomeScreen> {
           onSuccessEnd: (double value) {
             print('Value: $value');
           },
+          onErrorStart: (Failure failure) {
+            print('Error state starts');
+          },
+          onErrorEnd: (Failure failure) {
+            print('Error state ends');
+          },
         ),
       ],
       child: Scaffold(

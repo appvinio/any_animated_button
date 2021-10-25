@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 typedef SuccessCallback<T extends Object> = void Function(T data);
-typedef ErrorCallback<Failure  extends Object> = void Function(Failure failure);
+typedef ErrorCallback<Failure extends Object> = void Function(Failure failure);
 
 /// T is type of data returned from any animated button bloc
 /// Failure is type of data returned form any animated button bloc
-class AnyAnimatedButtonBlocListener<T extends Object, Failure  extends Object>
+class AnyAnimatedButtonBlocListener<T extends Object, Failure extends Object>
     extends BlocListener<AnyAnimatedButtonBloc, AnyAnimatedButtonState> {
   AnyAnimatedButtonBlocListener({
     required AnyAnimatedButtonBloc bloc,
@@ -16,8 +16,8 @@ class AnyAnimatedButtonBlocListener<T extends Object, Failure  extends Object>
     VoidCallback? onProgressEnd,
     SuccessCallback<T>? onSuccessStart,
     SuccessCallback<T>? onSuccessEnd,
-    ErrorCallback? onErrorStart,
-    ErrorCallback? onErrorEnd,
+    ErrorCallback<Failure>? onErrorStart,
+    ErrorCallback<Failure>? onErrorEnd,
   }) : super(
           bloc: bloc,
           listener: (BuildContext context, AnyAnimatedButtonState state) {
