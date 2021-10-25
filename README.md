@@ -1,6 +1,6 @@
 # any_animated_button
 
-Very often after tapping a button we send some data or form to   remote API and we need to signalize it to the user. This package makes it easy for us by creating expandable `AnyAnimatedButton` and `AnyAnimatedButtonBloc`.
+Very often after tapping a button we send some data or form to remote API and we need to signalize it to the user. This package makes it easy for us by creating expandable `AnyAnimatedButton` and `AnyAnimatedButtonBloc`.
 
 ![](https://github.com/appvinio/any_animated_button/blob/main/gifs/pretty_button.gif?raw=true)
 
