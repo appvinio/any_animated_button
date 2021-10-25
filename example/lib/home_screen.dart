@@ -4,6 +4,7 @@ import 'package:example/blocs/short_bloc.dart';
 import 'package:example/blocs/success_bloc.dart';
 import 'package:example/buttons/minimalistic_button.dart';
 import 'package:example/buttons/pretty_button.dart';
+import 'package:example/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
-        AnyAnimatedButtonBlocListener<double>(
+        AnyAnimatedButtonBlocListener<double, Failure>(
           bloc: _successBloc,
           onDefault: () {
             print('Default state');

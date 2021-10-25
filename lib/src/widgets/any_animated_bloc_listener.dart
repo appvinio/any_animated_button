@@ -1,12 +1,13 @@
 import 'package:any_animated_button/src/blocs/any_animated_button_bloc/any_animated_button_bloc.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 typedef SuccessCallback<T extends Object> = void Function(T data);
-typedef ErrorCallback<Failure> = void Function(Failure failure);
+typedef ErrorCallback<Failure  extends Object> = void Function(Failure failure);
 
 /// T is type of data returned from any animated button bloc
-class AnyAnimatedButtonBlocListener<T extends Object>
+/// Failure is type of data returned form any animated button bloc
+class AnyAnimatedButtonBlocListener<T extends Object, Failure  extends Object>
     extends BlocListener<AnyAnimatedButtonBloc, AnyAnimatedButtonState> {
   AnyAnimatedButtonBlocListener({
     required AnyAnimatedButtonBloc bloc,
@@ -40,11 +41,11 @@ class AnyAnimatedButtonBlocListener<T extends Object>
               if (onSuccessEnd != null) {
                 onSuccessEnd(state.object);
               }
-            } else if (state is ErrorAnimationStartsState) {
+            } else if (state is ErrorAnimationStartsState<Failure>) {
               if (onErrorStart != null) {
                 onErrorStart(state.failure);
               }
-            } else if (state is ErrorAnimationEndsState) {
+            } else if (state is ErrorAnimationEndsState<Failure>) {
               if (onErrorEnd != null) {
                 onErrorEnd(state.failure);
               }
