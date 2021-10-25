@@ -8,10 +8,10 @@ part 'any_animated_button_event.dart';
 
 part 'any_animated_button_state.dart';
 
-/// [Receiving] is type of input data, that bloc receives via [TriggerAnyAnimatedButtonEvent]
-/// [Returning] is type of output data that bloc returns via [SuccessAnyAnimatedButtonState]
+/// [Input] is type of input data, that bloc receives via [TriggerAnyAnimatedButtonEvent]
+/// [Output] is type of output data that bloc returns via [SuccessAnyAnimatedButtonState]
 /// [Failure] is type of error returned via [ErrorAnyAnimatedButtonState] when any error occurs during processing data
-abstract class AnyAnimatedButtonBloc<Receiving extends Object, Returning extends Object, Failure extends Object>
+abstract class AnyAnimatedButtonBloc<Input extends Object, Output extends Object, Failure extends Object>
     extends Bloc<AnyAnimatedButtonEvent, AnyAnimatedButtonState> {
   AnyAnimatedButtonBloc() : super(DefaultAnyAnimatedButtonState());
 
@@ -19,16 +19,16 @@ abstract class AnyAnimatedButtonBloc<Receiving extends Object, Returning extends
 
   @override
   Stream<AnyAnimatedButtonState> mapEventToState(AnyAnimatedButtonEvent event) async* {
-    if (event is TriggerAnyAnimatedButtonEvent<Receiving>) {
+    if (event is TriggerAnyAnimatedButtonEvent<Input>) {
       yield* _trigger(event);
     } else {
       throw Exception('wrong invocation of AnyAnimatedBloc');
     }
   }
 
-  Stream<AnyAnimatedButtonState> _trigger(TriggerAnyAnimatedButtonEvent<Receiving> event) async* {
+  Stream<AnyAnimatedButtonState> _trigger(TriggerAnyAnimatedButtonEvent<Input> event) async* {
     yield ProgressAnimationStartsState();
-    final Either<Failure, Returning> result = await asyncAction(event.object);
+    final Either<Failure, Output> result = await asyncAction(event.object);
     yield* result.fold(
       (Failure failure) async* {
         yield ProgressAnimationEndsState();
@@ -36,7 +36,7 @@ abstract class AnyAnimatedButtonBloc<Receiving extends Object, Returning extends
         await Future.delayed(_phaseDuration);
         yield ErrorAnimationEndsState(failure);
       },
-      (Returning data) async* {
+      (Output data) async* {
         yield ProgressAnimationEndsState();
         yield SuccessAnimationStartsState(data);
         await Future.delayed(_phaseDuration);
@@ -46,5 +46,5 @@ abstract class AnyAnimatedButtonBloc<Receiving extends Object, Returning extends
     yield DefaultAnyAnimatedButtonState();
   }
 
-  Future<Either<Failure, Returning>> asyncAction(Receiving input);
+  Future<Either<Failure, Output>> asyncAction(Input input);
 }
