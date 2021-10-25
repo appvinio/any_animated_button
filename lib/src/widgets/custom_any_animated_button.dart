@@ -5,6 +5,20 @@ import 'package:any_animated_button/src/widgets/any_not_animated_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// If [bloc] is null, then this button will not animate, but act like a normal button, otherwise
+/// it will be animated button.
+///
+/// [defaultParams] describes how the button will look in its default state.
+///
+/// [progressParams] describes how the button will look in progress state.
+/// Defaults to [AnyAnimatedButtonParams.progress].
+///
+/// [successParams] describes how the button will look in success state.
+/// Defaults to [AnyAnimatedButtonParams.success].
+///
+/// [errorParams] describes how the button will look in error state.
+/// Defaults to [AnyAnimatedButtonParams.error].
+
 abstract class CustomAnyAnimatedButton extends StatelessWidget {
   AnyAnimatedButtonBloc? get bloc;
 

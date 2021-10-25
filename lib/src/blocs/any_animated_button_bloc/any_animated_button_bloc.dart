@@ -8,6 +8,9 @@ part 'any_animated_button_event.dart';
 
 part 'any_animated_button_state.dart';
 
+/// [Receiving] is type of input data, that bloc receives via [TriggerAnyAnimatedButtonEvent]
+/// [Returning] is type of output data that bloc returns via [SuccessAnyAnimatedButtonState]
+/// [Failure] is type of error returned via [ErrorAnyAnimatedButtonState] when any error occurs during processing data
 abstract class AnyAnimatedButtonBloc<Receiving extends Object, Returning extends Object, Failure extends Object>
     extends Bloc<AnyAnimatedButtonEvent, AnyAnimatedButtonState> {
   AnyAnimatedButtonBloc() : super(DefaultAnyAnimatedButtonState());

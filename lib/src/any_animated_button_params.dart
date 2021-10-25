@@ -21,6 +21,7 @@ class AnyAnimatedButtonParams {
             'Cannot provide both a color and a decoration\n'
             'The color argument is just a shorthand for "decoration: BoxDecoration(color: color)".');
 
+  /// Creates default look of progress button with customizable colors and sizes.
   factory AnyAnimatedButtonParams.progress({
     double? size,
     Color backgroundColor = Colors.blue,
@@ -45,6 +46,7 @@ class AnyAnimatedButtonParams {
         ),
       );
 
+  /// Creates default look of success button with customizable colors and sizes.
   factory AnyAnimatedButtonParams.success({
     double? size,
     Color backgroundColor = Colors.green,
@@ -67,6 +69,7 @@ class AnyAnimatedButtonParams {
         ),
       );
 
+  /// Creates default look of error button with customizable colors and sizes.
   factory AnyAnimatedButtonParams.error({
     double? size,
     Color backgroundColor = Colors.red,
@@ -91,6 +94,10 @@ class AnyAnimatedButtonParams {
 
   static const double _size = 48.0;
   static const BorderRadius _borderRadius = BorderRadius.all(Radius.circular(45.0));
+
+  /// All parameters that should be animating (i.e. colors, border radius, size) should be put directly in one
+  /// of the corresponding fields. All of the other elements (i.e. Text, Icon) should be put
+  /// inside the [child] field.
   final Key? key;
   final AlignmentGeometry? alignment;
   final EdgeInsetsGeometry? padding;
