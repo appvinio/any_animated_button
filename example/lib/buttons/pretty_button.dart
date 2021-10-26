@@ -1,4 +1,5 @@
 import 'package:any_animated_button/any_animated_button.dart';
+import 'package:example/consts/colors.dart';
 import 'package:flutter/material.dart';
 
 class PrettyButton extends CustomAnyAnimatedButton {
@@ -20,7 +21,7 @@ class PrettyButton extends CustomAnyAnimatedButton {
         width: double.infinity,
         height: 56.0,
         decoration: BoxDecoration(
-          color: const Color(0xff073b4c),
+          color: CustomColors.navyBlue,
           borderRadius: _borderRadius,
         ),
         child: Material(
@@ -47,16 +48,16 @@ class PrettyButton extends CustomAnyAnimatedButton {
 
   @override
   AnyAnimatedButtonParams get progressParams => AnyAnimatedButtonParams.progress(
-        backgroundColor: const Color(0xff073b4c),
+        backgroundColor: CustomColors.navyBlue,
       );
 
   @override
   AnyAnimatedButtonParams get errorParams => AnyAnimatedButtonParams.error(
-        backgroundColor: const Color(0xffef476f),
+        backgroundColor: CustomColors.red,
       );
 
   @override
   AnyAnimatedButtonParams get successParams => AnyAnimatedButtonParams.success(
-        backgroundColor: const Color(0xff06d6a0),
+        backgroundColor: CustomColors.green,
       );
 }
