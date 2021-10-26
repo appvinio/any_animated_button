@@ -1,0 +1,50 @@
+import 'dart:async';
+
+import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+part 'any_animated_button_event.dart';
+
+part 'any_animated_button_state.dart';
+
+/// [Input] is type of input data, that bloc receives via [TriggerAnyAnimatedButtonEvent]
+/// [Output] is type of output data that bloc returns via [SuccessAnyAnimatedButtonState]
+/// [Failure] is type of error returned via [ErrorAnyAnimatedButtonState] when any error occurs during processing data
+abstract class AnyAnimatedButtonBloc<Input extends Object, Output extends Object, Failure extends Object>
+    extends Bloc<AnyAnimatedButtonEvent, AnyAnimatedButtonState> {
+  AnyAnimatedButtonBloc() : super(DefaultAnyAnimatedButtonState());
+
+  final Duration _phaseDuration = const Duration(milliseconds: 600);
+
+  @override
+  Stream<AnyAnimatedButtonState> mapEventToState(AnyAnimatedButtonEvent event) async* {
+    if (event is TriggerAnyAnimatedButtonEvent<Input>) {
+      yield* _trigger(event);
+    } else {
+      throw Exception('wrong invocation of AnyAnimatedBloc');
+    }
+  }
+
+  Stream<AnyAnimatedButtonState> _trigger(TriggerAnyAnimatedButtonEvent<Input> event) async* {
+    yield ProgressAnimationStartsState();
+    final Either<Failure, Output> result = await asyncAction(event.object);
+    yield* result.fold(
+      (Failure failure) async* {
+        yield ProgressAnimationEndsState();
+        yield ErrorAnimationStartsState(failure);
+        await Future.delayed(_phaseDuration);
+        yield ErrorAnimationEndsState(failure);
+      },
+      (Output data) async* {
+        yield ProgressAnimationEndsState();
+        yield SuccessAnimationStartsState(data);
+        await Future.delayed(_phaseDuration);
+        yield SuccessAnimationEndsState(data);
+      },
+    );
+    yield DefaultAnyAnimatedButtonState();
+  }
+
+  Future<Either<Failure, Output>> asyncAction(Input input);
+}
