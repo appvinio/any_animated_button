@@ -378,4 +378,4 @@ MinimalisticButton(
 - updating text on button with `width` set to `null` does not work properly. The button width will adjust only to the first text width. The workaround is to set fixed width of the longer text instead of null.
 
 
-Created by [Piotr Białas](https://www.linkedin.com/in/piotr-bia%C5%82as-bb4b42206/), [appvinio](https://appvinio.com)
+Created by Piotr Białas, [appvinio](https://appvinio.com)
