@@ -11,14 +11,16 @@ part 'any_animated_button_state.dart';
 /// [Input] is type of input data, that bloc receives via [TriggerAnyAnimatedButtonEvent]
 /// [Output] is type of output data that bloc returns via [SuccessAnyAnimatedButtonState]
 /// [Failure] is type of error returned via [ErrorAnyAnimatedButtonState] when any error occurs during processing data
-abstract class AnyAnimatedButtonBloc<Input extends Object, Output extends Object, Failure extends Object>
+abstract class AnyAnimatedButtonBloc<Input extends Object,
+        Output extends Object, Failure extends Object>
     extends Bloc<AnyAnimatedButtonEvent, AnyAnimatedButtonState> {
   AnyAnimatedButtonBloc() : super(DefaultAnyAnimatedButtonState());
 
   final Duration _phaseDuration = const Duration(milliseconds: 600);
 
   @override
-  Stream<AnyAnimatedButtonState> mapEventToState(AnyAnimatedButtonEvent event) async* {
+  Stream<AnyAnimatedButtonState> mapEventToState(
+      AnyAnimatedButtonEvent event) async* {
     if (event is TriggerAnyAnimatedButtonEvent<Input>) {
       yield* _trigger(event);
     } else {
@@ -26,7 +28,8 @@ abstract class AnyAnimatedButtonBloc<Input extends Object, Output extends Object
     }
   }
 
-  Stream<AnyAnimatedButtonState> _trigger(TriggerAnyAnimatedButtonEvent<Input> event) async* {
+  Stream<AnyAnimatedButtonState> _trigger(
+      TriggerAnyAnimatedButtonEvent<Input> event) async* {
     yield ProgressAnimationStartsState();
     final Either<Failure, Output> result = await asyncAction(event.object);
     yield* result.fold(

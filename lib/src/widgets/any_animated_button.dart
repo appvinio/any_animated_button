@@ -38,8 +38,10 @@ class _AnyAnimatedButtonState extends State<AnyAnimatedButton> {
   @override
   void initState() {
     _defaultParams = widget.defaultButtonParams;
-    _progressParams = widget.progressButtonParams ?? AnyAnimatedButtonParams.progress();
-    _successParams = widget.successButtonParams ?? AnyAnimatedButtonParams.success();
+    _progressParams =
+        widget.progressButtonParams ?? AnyAnimatedButtonParams.progress();
+    _successParams =
+        widget.successButtonParams ?? AnyAnimatedButtonParams.success();
     _errorParams = widget.errorButtonParams ?? AnyAnimatedButtonParams.error();
 
     _maxHeight = _getMaxHeight();
@@ -49,7 +51,8 @@ class _AnyAnimatedButtonState extends State<AnyAnimatedButton> {
     if (_defaultParams.width == null || _defaultParams.width!.isInfinite) {
       WidgetsBinding.instance!.addPostFrameCallback((_) {
         setState(() {
-          final RenderBox button = _key.currentContext!.findRenderObject() as RenderBox;
+          final RenderBox button =
+              _key.currentContext!.findRenderObject() as RenderBox;
           _defaultParams = _defaultParams.copyWith(width: button.size.width);
         });
       });
@@ -67,20 +70,27 @@ class _AnyAnimatedButtonState extends State<AnyAnimatedButton> {
           builder: (BuildContext context, AnyAnimatedButtonState state) {
             _params = _getParamsFromState(state);
 
-            return _defaultParams.width == null || _defaultParams.width!.isInfinite
-                ? AnyNotAnimatedButton(params: _defaultParams.copyWith(key: _key))
+            return _defaultParams.width == null ||
+                    _defaultParams.width!.isInfinite
+                ? AnyNotAnimatedButton(
+                    params: _defaultParams.copyWith(key: _key))
                 : AnimatedContainer(
-                    key: _key,
-                    duration: const Duration(milliseconds: 300),
-                    width: _params.width ?? _defaultParams.width,
                     height: _params.height,
+                    key: _key,
                     alignment: _params.alignment,
                     padding: _params.padding,
-                    margin: _params.margin,
+                    color: _params.color,
                     decoration: _params.decoration,
                     foregroundDecoration: _params.foregroundDecoration,
+                    width: _params.width ?? _defaultParams.width,
+                    constraints: _params.constraints,
+                    margin: _params.margin,
                     transform: _params.transform,
-                    color: _params.color,
+                    transformAlignment: _params.transformAlignment,
+                    clipBehavior: _params.clipBehavior,
+                    curve: _params.curve,
+                    duration: _params.duration,
+                    onEnd: _params.onEnd,
                     child: _params.child,
                   );
           },

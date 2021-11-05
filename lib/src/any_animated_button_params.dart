@@ -10,9 +10,15 @@ class AnyAnimatedButtonParams {
     this.decoration,
     this.foregroundDecoration,
     this.width,
+    this.constraints,
     this.margin,
     this.transform,
+    this.transformAlignment,
     this.child = const SizedBox(),
+    this.clipBehavior = Clip.none,
+    this.curve = Curves.linear,
+    this.duration = const Duration(milliseconds: 300),
+    this.onEnd,
   })  : assert(margin == null || margin.isNonNegative),
         assert(padding == null || padding.isNonNegative),
         assert(decoration == null || decoration.debugAssertIsValid()),
@@ -27,10 +33,12 @@ class AnyAnimatedButtonParams {
     Color backgroundColor = Colors.blue,
     Color progressColor = Colors.white,
     EdgeInsets padding = const EdgeInsets.all(10.0),
+    Duration duration = const Duration(milliseconds: 300),
   }) =>
       AnyAnimatedButtonParams(
         width: size ?? _size,
         height: size ?? _size,
+        duration: duration,
         decoration: BoxDecoration(
           borderRadius: _borderRadius,
           color: backgroundColor,
@@ -52,10 +60,12 @@ class AnyAnimatedButtonParams {
     Color backgroundColor = Colors.green,
     Color iconColor = Colors.white,
     EdgeInsets padding = const EdgeInsets.all(8.0),
+    Duration duration = const Duration(milliseconds: 300),
   }) =>
       AnyAnimatedButtonParams(
         width: size ?? _size,
         height: size ?? _size,
+        duration: duration,
         decoration: BoxDecoration(
           borderRadius: _borderRadius,
           color: backgroundColor,
@@ -75,10 +85,12 @@ class AnyAnimatedButtonParams {
     Color backgroundColor = Colors.red,
     Color iconColor = Colors.white,
     EdgeInsets padding = const EdgeInsets.all(8.0),
+    Duration duration = const Duration(milliseconds: 300),
   }) =>
       AnyAnimatedButtonParams(
         width: size ?? _size,
         height: size ?? _size,
+        duration: duration,
         decoration: BoxDecoration(
           borderRadius: _borderRadius,
           color: backgroundColor,
@@ -93,9 +105,10 @@ class AnyAnimatedButtonParams {
       );
 
   static const double _size = 48.0;
-  static const BorderRadius _borderRadius = BorderRadius.all(Radius.circular(45.0));
+  static const BorderRadius _borderRadius =
+      BorderRadius.all(Radius.circular(45.0));
 
-  /// All parameters that should be animating (i.e. colors, border radius, size) should be put directly in one
+  /// All parameters that should be animated (i.e. colors, border radius, size) should be put directly in one
   /// of the corresponding fields. All of the other elements (i.e. Text, Icon) should be put
   /// inside the [child] field.
   final Key? key;
@@ -106,9 +119,15 @@ class AnyAnimatedButtonParams {
   final Decoration? foregroundDecoration;
   final double? width;
   final double height;
+  final BoxConstraints? constraints;
   final EdgeInsetsGeometry? margin;
   final Matrix4? transform;
+  final AlignmentGeometry? transformAlignment;
   final Widget? child;
+  final Clip clipBehavior;
+  final Curve curve;
+  final Duration duration;
+  final VoidCallback? onEnd;
 
   AnyAnimatedButtonParams copyWith({
     Key? key,

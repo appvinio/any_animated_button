@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
-        AnyAnimatedButtonBlocListener<double, Failure>(
+        AnyAnimatedButtonBlocListener<int, double, Failure>(
           bloc: _successBloc,
           onDefault: () {
             print('Default state');
@@ -70,16 +70,16 @@ class _HomeScreenState extends State<HomeScreen> {
           onProgressEnd: () {
             print('Progress state ends');
           },
-          onSuccessStart: (double value) {
+          onSuccessStart: (value) {
             print('Value: $value');
           },
-          onSuccessEnd: (double value) {
+          onSuccessEnd: (value) {
             print('Value: $value');
           },
-          onErrorStart: (Failure failure) {
+          onErrorStart: (failure) {
             print('Error state starts');
           },
-          onErrorEnd: (Failure failure) {
+          onErrorEnd: (failure) {
             print('Error state ends');
           },
         ),
@@ -95,7 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: PrettyButton(
                     bloc: _success2Bloc,
                     text: 'Send data!',
-                    onTap: () => _success2Bloc.add(TriggerAnyAnimatedButtonEvent(1)),
+                    onTap: () =>
+                        _success2Bloc.add(TriggerAnyAnimatedButtonEvent(1)),
                   ),
                 ),
                 const SizedBox(height: 32.0),
@@ -107,19 +108,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 MinimalisticButton(
                   bloc: _successBloc,
                   text: 'Animated success button',
-                  onTap: () => _successBloc.add(TriggerAnyAnimatedButtonEvent(13)),
+                  onTap: () =>
+                      _successBloc.add(TriggerAnyAnimatedButtonEvent(13)),
                 ),
                 const SizedBox(height: 12.0),
                 MinimalisticButton(
                   bloc: _errorBloc,
                   text: 'Animated error button',
-                  onTap: () => _errorBloc.add(TriggerAnyAnimatedButtonEvent(13)),
+                  onTap: () =>
+                      _errorBloc.add(TriggerAnyAnimatedButtonEvent(13)),
                 ),
                 const SizedBox(height: 12.0),
                 MinimalisticButton(
                   bloc: _shortBloc,
                   text: 'Short animation button',
-                  onTap: () => _shortBloc.add(TriggerAnyAnimatedButtonEvent(13)),
+                  onTap: () =>
+                      _shortBloc.add(TriggerAnyAnimatedButtonEvent(13)),
                 ),
                 const SizedBox(height: 12.0),
                 Row(
@@ -129,7 +133,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       bloc: _enabledButton,
                       text: 'Enabled button',
                       enabled: _enabled,
-                      onTap: () => _enabledButton.add(TriggerAnyAnimatedButtonEvent(13)),
+                      onTap: () =>
+                          _enabledButton.add(TriggerAnyAnimatedButtonEvent(13)),
                     ),
                     const SizedBox(width: 12.0),
                     MinimalisticButton(
@@ -146,21 +151,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 MinimalisticButton(
                   bloc: _nullWidth,
                   text: 'width: null',
-                  onTap: () => _nullWidth.add(TriggerAnyAnimatedButtonEvent(13)),
+                  onTap: () =>
+                      _nullWidth.add(TriggerAnyAnimatedButtonEvent(13)),
                 ),
                 const SizedBox(height: 12.0),
                 MinimalisticButton(
                   bloc: _infinityWidth,
                   width: double.infinity,
                   text: 'width: double.infinity',
-                  onTap: () => _infinityWidth.add(TriggerAnyAnimatedButtonEvent(13)),
+                  onTap: () =>
+                      _infinityWidth.add(TriggerAnyAnimatedButtonEvent(13)),
                 ),
                 const SizedBox(height: 12.0),
                 MinimalisticButton(
                   bloc: _fixedWidth,
                   width: 200.0,
                   text: 'width: 200.0',
-                  onTap: () => _fixedWidth.add(TriggerAnyAnimatedButtonEvent(13)),
+                  onTap: () =>
+                      _fixedWidth.add(TriggerAnyAnimatedButtonEvent(13)),
                 ),
               ],
             ),
