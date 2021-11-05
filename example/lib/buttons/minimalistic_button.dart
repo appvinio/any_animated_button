@@ -41,6 +41,7 @@ class MinimalisticButton extends CustomAnyAnimatedButton {
                     text,
                     style: const TextStyle(color: Colors.white),
                     maxLines: 1,
+                    softWrap: false,
                   ),
                 ],
               ),
