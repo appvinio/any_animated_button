@@ -50,9 +50,15 @@ Decoration? decoration;
 Decoration? foregroundDecoration;
 double? width;
 double height;
+BoxConstraints? constraints;
 EdgeInsetsGeometry? margin;
 Matrix4? transform;
+AlignmentGeometry? transformAlignment;
 Widget? child;
+Clip clipBehavior;
+Curve curve;
+Duration duration;
+VoidCallback? onEnd;
 ```
 
 The only required field is `height`, rest of them are optional.
@@ -61,28 +67,31 @@ We have got also 3 factory constructors, which describe default progress, error 
 
 ```dart
 factory AnyAnimatedButtonParams.progress({
-double? size,
-Color backgroundColor = Colors.blue,
-Color progressColor = Colors.white,
-EdgeInsets padding = const EdgeInsets.all(10.0),
+  double? size,
+  Color backgroundColor = Colors.blue,
+  Color progressColor = Colors.white,
+  EdgeInsets padding = const EdgeInsets.all(10.0),
+  Duration duration = const Duration(milliseconds: 300),
 })
 ```
 
 ```dart
 factory AnyAnimatedButtonParams.success({
-double? size,
-Color backgroundColor = Colors.green,
-Color iconColor = Colors.white,
-EdgeInsets padding = const EdgeInsets.all(8.0),
+  double? size,
+  Color backgroundColor = Colors.green,
+  Color iconColor = Colors.white,
+  EdgeInsets padding = const EdgeInsets.all(8.0),
+  Duration duration = const Duration(milliseconds: 300),
 })
 ```
 
 ```dart
 factory AnyAnimatedButtonParams.error({
-double? size,
-Color backgroundColor = Colors.red,
-Color iconColor = Colors.white,
-EdgeInsets padding = const EdgeInsets.all(8.0),
+  double? size,
+  Color backgroundColor = Colors.red,
+  Color iconColor = Colors.white,
+  EdgeInsets padding = const EdgeInsets.all(8.0),
+  Duration duration = const Duration(milliseconds: 300),
 })
 ```
 
@@ -113,32 +122,31 @@ AnyAnimatedButtonParams get defaultParams => AnyAnimatedButtonParams(
 
 ## AnyAnimatedButtonBlocListener
 
-The package has built-in `BlocListener`, which makes it easier for you to listen to the state changes. `AnyAnimatedButtonBlocListener<T, Failure>` takes 2 generic types, `T` is type of data returned on success and `Failure` is the error which will be returned, when any error occurs in bloc. It does not take child argument, so it should be put in `MultiBlocListener`.
-
+The package has built-in BlocListener, which makes it easier for you to listen to the state changes. AnyAnimatedButtonBlocListener<Input, Output, Failure> takes 3 generic types,Input is type of data that goes into the bloc, Output is type of data returned on success and Failure is the error which will be returned, when any error occurs in bloc. It does not take child argument, so it should be put in MultiBlocListener.
 ```dart
-AnyAnimatedButtonBlocListener<double, Failure>(
-bloc: _successBloc,
-onDefault: () {
-print('Default state');
-},
-onProgressStart: () {
-print('Progress state starts');
-},
-onProgressEnd: () {
-print('Progress state ends');
-},
-onSuccessStart: (double value) {
-print('Value: $value');
-},
-onSuccessEnd: (double value) {
-print('Value: $value');
-},
-onErrorStart: (Failure failure) {
-print('Error state starts');
-},
-onErrorEnd: (Failure failure) {
-print('Error state ends');
-},
+AnyAnimatedButtonBlocListener<int, double, Failure>(
+  bloc: _successBloc,
+  onDefault: () {
+    print('Default state');
+  },
+  onProgressStart: () {
+    print('Progress state starts');
+  },
+  onProgressEnd: () {
+    print('Progress state ends');
+  },
+  onSuccessStart: (value) {
+   print('Value: $value');
+  },
+  onSuccessEnd: (value) {
+   print('Value: $value');
+  },
+  onErrorStart: (failure) {
+    print('Error state starts');
+  },
+  onErrorEnd: (failure) {
+    print('Error state ends');
+  },
 ),
 ```
 
@@ -200,6 +208,7 @@ class MinimalisticButton extends CustomAnyAnimatedButton {
                     text,
                     style: const TextStyle(color: Colors.white),
                     maxLines: 1,
+                    softWrap: false,
                   ),
                 ],
               ),
