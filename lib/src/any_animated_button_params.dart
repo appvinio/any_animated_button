@@ -105,7 +105,8 @@ class AnyAnimatedButtonParams {
       );
 
   static const double _size = 48.0;
-  static const BorderRadius _borderRadius = BorderRadius.all(Radius.circular(45.0));
+  static const BorderRadius _borderRadius =
+      BorderRadius.all(Radius.circular(45.0));
 
   /// All parameters that should be animated (i.e. colors, border radius, size) should be put directly in one
   /// of the corresponding fields. All of the other elements (i.e. Text, Icon) should be put

@@ -47,7 +47,8 @@ class PrettyButton extends CustomAnyAnimatedButton {
       );
 
   @override
-  AnyAnimatedButtonParams get progressParams => AnyAnimatedButtonParams.progress(
+  AnyAnimatedButtonParams get progressParams =>
+      AnyAnimatedButtonParams.progress(
         backgroundColor: CustomColors.navyBlue,
       );
 

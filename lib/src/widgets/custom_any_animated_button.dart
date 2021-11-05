@@ -24,9 +24,11 @@ abstract class CustomAnyAnimatedButton extends StatelessWidget {
 
   AnyAnimatedButtonParams get defaultParams;
 
-  AnyAnimatedButtonParams get progressParams => AnyAnimatedButtonParams.progress();
+  AnyAnimatedButtonParams get progressParams =>
+      AnyAnimatedButtonParams.progress();
 
-  AnyAnimatedButtonParams get successParams => AnyAnimatedButtonParams.success();
+  AnyAnimatedButtonParams get successParams =>
+      AnyAnimatedButtonParams.success();
 
   AnyAnimatedButtonParams get errorParams => AnyAnimatedButtonParams.error();
 

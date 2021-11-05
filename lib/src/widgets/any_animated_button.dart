@@ -38,8 +38,10 @@ class _AnyAnimatedButtonState extends State<AnyAnimatedButton> {
   @override
   void initState() {
     _defaultParams = widget.defaultButtonParams;
-    _progressParams = widget.progressButtonParams ?? AnyAnimatedButtonParams.progress();
-    _successParams = widget.successButtonParams ?? AnyAnimatedButtonParams.success();
+    _progressParams =
+        widget.progressButtonParams ?? AnyAnimatedButtonParams.progress();
+    _successParams =
+        widget.successButtonParams ?? AnyAnimatedButtonParams.success();
     _errorParams = widget.errorButtonParams ?? AnyAnimatedButtonParams.error();
 
     _maxHeight = _getMaxHeight();
@@ -49,7 +51,8 @@ class _AnyAnimatedButtonState extends State<AnyAnimatedButton> {
     if (_defaultParams.width == null || _defaultParams.width!.isInfinite) {
       WidgetsBinding.instance!.addPostFrameCallback((_) {
         setState(() {
-          final RenderBox button = _key.currentContext!.findRenderObject() as RenderBox;
+          final RenderBox button =
+              _key.currentContext!.findRenderObject() as RenderBox;
           _defaultParams = _defaultParams.copyWith(width: button.size.width);
         });
       });
@@ -67,8 +70,10 @@ class _AnyAnimatedButtonState extends State<AnyAnimatedButton> {
           builder: (BuildContext context, AnyAnimatedButtonState state) {
             _params = _getParamsFromState(state);
 
-            return _defaultParams.width == null || _defaultParams.width!.isInfinite
-                ? AnyNotAnimatedButton(params: _defaultParams.copyWith(key: _key))
+            return _defaultParams.width == null ||
+                    _defaultParams.width!.isInfinite
+                ? AnyNotAnimatedButton(
+                    params: _defaultParams.copyWith(key: _key))
                 : AnimatedContainer(
                     height: _params.height,
                     key: _key,
