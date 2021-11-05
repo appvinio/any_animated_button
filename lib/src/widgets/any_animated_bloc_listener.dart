@@ -7,15 +7,15 @@ typedef ErrorCallback<Failure extends Object> = void Function(Failure failure);
 
 /// T is type of data returned from any animated button bloc
 /// Failure is type of data returned form any animated button bloc
-class AnyAnimatedButtonBlocListener<T extends Object, Failure extends Object>
-    extends BlocListener<AnyAnimatedButtonBloc, AnyAnimatedButtonState> {
+class AnyAnimatedButtonBlocListener<Input extends Object, Output extends Object, Failure extends Object>
+    extends BlocListener<AnyAnimatedButtonBloc<Input, Output, Failure>, AnyAnimatedButtonState> {
   AnyAnimatedButtonBlocListener({
-    required AnyAnimatedButtonBloc bloc,
+    required AnyAnimatedButtonBloc<Input, Output, Failure> bloc,
     VoidCallback? onDefault,
     VoidCallback? onProgressStart,
     VoidCallback? onProgressEnd,
-    SuccessCallback<T>? onSuccessStart,
-    SuccessCallback<T>? onSuccessEnd,
+    SuccessCallback<Output>? onSuccessStart,
+    SuccessCallback<Output>? onSuccessEnd,
     ErrorCallback<Failure>? onErrorStart,
     ErrorCallback<Failure>? onErrorEnd,
   }) : super(
@@ -33,11 +33,11 @@ class AnyAnimatedButtonBlocListener<T extends Object, Failure extends Object>
               if (onProgressEnd != null) {
                 onProgressEnd();
               }
-            } else if (state is SuccessAnimationStartsState<T>) {
+            } else if (state is SuccessAnimationStartsState<Output>) {
               if (onSuccessStart != null) {
                 onSuccessStart(state.object);
               }
-            } else if (state is SuccessAnimationEndsState<T>) {
+            } else if (state is SuccessAnimationEndsState<Output>) {
               if (onSuccessEnd != null) {
                 onSuccessEnd(state.object);
               }

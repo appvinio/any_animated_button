@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
-        AnyAnimatedButtonBlocListener<double, Failure>(
+        AnyAnimatedButtonBlocListener<int, double, Failure>(
           bloc: _successBloc,
           onDefault: () {
             print('Default state');
@@ -70,16 +70,16 @@ class _HomeScreenState extends State<HomeScreen> {
           onProgressEnd: () {
             print('Progress state ends');
           },
-          onSuccessStart: (double value) {
+          onSuccessStart: (value) {
             print('Value: $value');
           },
-          onSuccessEnd: (double value) {
+          onSuccessEnd: (value) {
             print('Value: $value');
           },
-          onErrorStart: (Failure failure) {
+          onErrorStart: (failure) {
             print('Error state starts');
           },
-          onErrorEnd: (Failure failure) {
+          onErrorEnd: (failure) {
             print('Error state ends');
           },
         ),
