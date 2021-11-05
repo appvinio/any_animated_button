@@ -70,17 +70,22 @@ class _AnyAnimatedButtonState extends State<AnyAnimatedButton> {
             return _defaultParams.width == null || _defaultParams.width!.isInfinite
                 ? AnyNotAnimatedButton(params: _defaultParams.copyWith(key: _key))
                 : AnimatedContainer(
-                    key: _key,
-                    duration: const Duration(milliseconds: 300),
-                    width: _params.width ?? _defaultParams.width,
                     height: _params.height,
+                    key: _key,
                     alignment: _params.alignment,
                     padding: _params.padding,
-                    margin: _params.margin,
+                    color: _params.color,
                     decoration: _params.decoration,
                     foregroundDecoration: _params.foregroundDecoration,
+                    width: _params.width ?? _defaultParams.width,
+                    constraints: _params.constraints,
+                    margin: _params.margin,
                     transform: _params.transform,
-                    color: _params.color,
+                    transformAlignment: _params.transformAlignment,
+                    clipBehavior: _params.clipBehavior,
+                    curve: _params.curve,
+                    duration: _params.duration,
+                    onEnd: _params.onEnd,
                     child: _params.child,
                   );
           },
