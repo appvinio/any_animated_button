@@ -1,3 +1,7 @@
+## 0.0.3
+
+- adjusted package to work with flutter_bloc version ^8.0.0
+
 ## 0.0.2
 
 - added additional fields to `AnyAnimatedButtonParams`
@@ -7,4 +11,4 @@
 
 ## 0.0.1
 
-- Initial release with first version of the button.
+- initial release with first version of the button.
