@@ -113,7 +113,6 @@ linter:
     - sort_child_properties_last
     - sort_constructors_first
     - sort_unnamed_constructors_first
-    - super_goes_last
     - type_annotate_public_apis
     - type_init_formals
     - unawaited_futures

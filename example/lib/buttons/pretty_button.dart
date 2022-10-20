@@ -7,7 +7,8 @@ class PrettyButton extends CustomAnyAnimatedButton {
     required this.onTap,
     required this.text,
     this.bloc,
-  });
+    Key? key,
+  }) : super();
 
   @override
   final AnyAnimatedButtonBloc? bloc;

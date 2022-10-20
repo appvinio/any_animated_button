@@ -11,7 +11,8 @@ part 'any_animated_button_state.dart';
 /// [Input] is type of input data, that bloc receives via [TriggerAnyAnimatedButtonEvent]
 /// [Output] is type of output data that bloc returns via [SuccessAnyAnimatedButtonState]
 /// [Failure] is type of error returned via [ErrorAnyAnimatedButtonState] when any error occurs during processing data
-abstract class AnyAnimatedButtonBloc<Input extends Object, Output extends Object, Failure extends Object>
+abstract class AnyAnimatedButtonBloc<Input extends Object,
+        Output extends Object, Failure extends Object>
     extends Bloc<AnyAnimatedButtonEvent, AnyAnimatedButtonState> {
   AnyAnimatedButtonBloc() : super(DefaultAnyAnimatedButtonState()) {
     on<TriggerAnyAnimatedButtonEvent<Input>>(_trigger);
@@ -19,7 +20,7 @@ abstract class AnyAnimatedButtonBloc<Input extends Object, Output extends Object
 
   final Duration _phaseDuration = const Duration(milliseconds: 600);
 
-  void _trigger(
+  Future _trigger(
     TriggerAnyAnimatedButtonEvent<Input> event,
     Emitter<AnyAnimatedButtonState> emit,
   ) async {

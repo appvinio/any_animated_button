@@ -21,7 +21,7 @@ class AnyAnimatedButton extends StatefulWidget {
   final AnyAnimatedButtonParams? errorButtonParams;
 
   @override
-  _AnyAnimatedButtonState createState() => _AnyAnimatedButtonState();
+  State<AnyAnimatedButton> createState() => _AnyAnimatedButtonState();
 }
 
 class _AnyAnimatedButtonState extends State<AnyAnimatedButton> {
@@ -49,10 +49,10 @@ class _AnyAnimatedButtonState extends State<AnyAnimatedButton> {
 
     _key = GlobalKey();
     if (_defaultParams.width == null || _defaultParams.width!.isInfinite) {
-      WidgetsBinding.instance!.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         setState(() {
           final RenderBox button =
-              _key.currentContext!.findRenderObject() as RenderBox;
+              _key.currentContext!.findRenderObject()! as RenderBox;
           _defaultParams = _defaultParams.copyWith(width: button.size.width);
         });
       });

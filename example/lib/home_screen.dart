@@ -6,7 +6,6 @@ import 'package:example/buttons/minimalistic_button.dart';
 import 'package:example/buttons/pretty_button.dart';
 import 'package:example/failure.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -57,33 +56,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        AnyAnimatedButtonBlocListener<int, double, Failure>(
-          bloc: _successBloc,
-          onDefault: () {
-            print('Default state');
-          },
-          onProgressStart: () {
-            print('Progress state starts');
-          },
-          onProgressEnd: () {
-            print('Progress state ends');
-          },
-          onSuccessStart: (value) {
-            print('Value: $value');
-          },
-          onSuccessEnd: (value) {
-            print('Value: $value');
-          },
-          onErrorStart: (failure) {
-            print('Error state starts');
-          },
-          onErrorEnd: (failure) {
-            print('Error state ends');
-          },
-        ),
-      ],
+    return AnyAnimatedButtonBlocListener<int, double, Failure>(
+      bloc: _successBloc,
+      onDefault: () {
+        print('Default state');
+      },
+      onProgressStart: () {
+        print('Progress state starts');
+      },
+      onProgressEnd: () {
+        print('Progress state ends');
+      },
+      onSuccessStart: (value) {
+        print('Value: $value');
+      },
+      onSuccessEnd: (value) {
+        print('Value: $value');
+      },
+      onErrorStart: (failure) {
+        print('Error state starts');
+      },
+      onErrorEnd: (failure) {
+        print('Error state ends');
+      },
       child: Scaffold(
         body: SafeArea(
           child: Center(

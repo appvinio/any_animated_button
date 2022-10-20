@@ -13,6 +13,7 @@ class AnyAnimatedButtonBlocListener<Input extends Object, Output extends Object,
         AnyAnimatedButtonState> {
   AnyAnimatedButtonBlocListener({
     required AnyAnimatedButtonBloc<Input, Output, Failure> bloc,
+    Widget? child,
     VoidCallback? onDefault,
     VoidCallback? onProgressStart,
     VoidCallback? onProgressEnd,
@@ -53,5 +54,6 @@ class AnyAnimatedButtonBlocListener<Input extends Object, Output extends Object,
               }
             }
           },
+          child: child,
         );
 }

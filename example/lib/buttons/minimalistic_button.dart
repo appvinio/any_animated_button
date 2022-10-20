@@ -8,7 +8,8 @@ class MinimalisticButton extends CustomAnyAnimatedButton {
     this.enabled = true,
     this.width,
     this.bloc,
-  });
+    Key? key,
+  }) : super();
 
   @override
   final AnyAnimatedButtonBloc? bloc;
