@@ -20,15 +20,15 @@ import 'package:flutter/material.dart';
 /// Defaults to [AnyAnimatedButtonParams.error].
 
 abstract class CustomAnyAnimatedButton extends StatelessWidget {
+  const CustomAnyAnimatedButton({super.key});
+
   AnyAnimatedButtonBloc? get bloc;
 
   AnyAnimatedButtonParams get defaultParams;
 
-  AnyAnimatedButtonParams get progressParams =>
-      AnyAnimatedButtonParams.progress();
+  AnyAnimatedButtonParams get progressParams => AnyAnimatedButtonParams.progress();
 
-  AnyAnimatedButtonParams get successParams =>
-      AnyAnimatedButtonParams.success();
+  AnyAnimatedButtonParams get successParams => AnyAnimatedButtonParams.success();
 
   AnyAnimatedButtonParams get errorParams => AnyAnimatedButtonParams.error();
 
