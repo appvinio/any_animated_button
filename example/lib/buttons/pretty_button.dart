@@ -7,7 +7,8 @@ class PrettyButton extends CustomAnyAnimatedButton {
     required this.onTap,
     required this.text,
     this.bloc,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   final AnyAnimatedButtonBloc? bloc;
@@ -47,8 +48,7 @@ class PrettyButton extends CustomAnyAnimatedButton {
       );
 
   @override
-  AnyAnimatedButtonParams get progressParams =>
-      AnyAnimatedButtonParams.progress(
+  AnyAnimatedButtonParams get progressParams => AnyAnimatedButtonParams.progress(
         backgroundColor: CustomColors.navyBlue,
       );
 

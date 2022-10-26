@@ -7,12 +7,11 @@ typedef ErrorCallback<Failure extends Object> = void Function(Failure failure);
 
 /// T is type of data returned from any animated button bloc
 /// Failure is type of data returned form any animated button bloc
-class AnyAnimatedButtonBlocListener<Input extends Object, Output extends Object,
-        Failure extends Object>
-    extends BlocListener<AnyAnimatedButtonBloc<Input, Output, Failure>,
-        AnyAnimatedButtonState> {
+class AnyAnimatedButtonBlocListener<Input extends Object, Output extends Object, Failure extends Object>
+    extends BlocListener<AnyAnimatedButtonBloc<Input, Output, Failure>, AnyAnimatedButtonState> {
   AnyAnimatedButtonBlocListener({
     required AnyAnimatedButtonBloc<Input, Output, Failure> bloc,
+    Widget? child,
     VoidCallback? onDefault,
     VoidCallback? onProgressStart,
     VoidCallback? onProgressEnd,
@@ -53,5 +52,6 @@ class AnyAnimatedButtonBlocListener<Input extends Object, Output extends Object,
               }
             }
           },
+          child: child,
         );
 }

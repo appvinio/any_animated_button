@@ -122,7 +122,7 @@ AnyAnimatedButtonParams get defaultParams => AnyAnimatedButtonParams(
 
 ## AnyAnimatedButtonBlocListener
 
-The package has built-in BlocListener, which makes it easier for you to listen to the state changes. AnyAnimatedButtonBlocListener<Input, Output, Failure> takes 3 generic types,Input is type of data that goes into the bloc, Output is type of data returned on success and Failure is the error which will be returned, when any error occurs in bloc. It does not take child argument, so it should be put in MultiBlocListener.
+The package has built-in BlocListener, which makes it easier for you to listen to the state changes. AnyAnimatedButtonBlocListener<Input, Output, Failure> takes 3 generic types,Input is type of data that goes into the bloc, Output is type of data returned on success and Failure is the error which will be returned, when any error occurs in bloc.
 ```dart
 AnyAnimatedButtonBlocListener<int, double, Failure>(
   bloc: _successBloc,
