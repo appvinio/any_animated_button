@@ -1,3 +1,6 @@
+## 0.0.5
+- fixed 'onEnd' not working
+
 ## 0.0.4
 
 - updated flutter version to use 3.3.5

@@ -141,6 +141,7 @@ class AnyAnimatedButtonParams {
     EdgeInsetsGeometry? margin,
     Matrix4? transform,
     Widget? child,
+    VoidCallback? onEnd,
   }) {
     return AnyAnimatedButtonParams(
       key: key ?? this.key,
@@ -154,6 +155,7 @@ class AnyAnimatedButtonParams {
       margin: margin ?? this.margin,
       transform: transform ?? this.transform,
       child: child ?? this.child,
+      onEnd: onEnd ?? this.onEnd,
     );
   }
 }
