@@ -1,3 +1,6 @@
+## 0.0.6
+- added (optional) droppable transformer
+
 ## 0.0.5
 - fixed 'onEnd' not working
 
