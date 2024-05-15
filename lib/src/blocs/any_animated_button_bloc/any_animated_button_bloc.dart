@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,8 +15,8 @@ part 'any_animated_button_state.dart';
 abstract class AnyAnimatedButtonBloc<Input extends Object,
         Output extends Object, Failure extends Object>
     extends Bloc<AnyAnimatedButtonEvent, AnyAnimatedButtonState> {
-  AnyAnimatedButtonBloc() : super(DefaultAnyAnimatedButtonState()) {
-    on<TriggerAnyAnimatedButtonEvent<Input>>(_trigger);
+  AnyAnimatedButtonBloc({bool isDroppable = false}) : super(DefaultAnyAnimatedButtonState()) {
+    on<TriggerAnyAnimatedButtonEvent<Input>>(_trigger, transformer: isDroppable ? droppable() : null);
   }
 
   final Duration _phaseDuration = const Duration(milliseconds: 600);
